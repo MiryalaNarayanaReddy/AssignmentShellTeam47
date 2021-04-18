@@ -1,7 +1,7 @@
 #include "user.h"
 #include "directory.h"
+#include "../switch/switch.h"
 
-// #include <../switch/switch.h>
 // #include <../create/create.h>
 // #include <../update/update.h>
 // #include <../setup.setup.h>
@@ -23,6 +23,32 @@ bool AreSame(char *a, char *b)
     }
     else
         return false;
+}
+
+// char *get_string()
+// {
+//     char ch;
+//     int i = 0;
+//     char s[MAX_STRLEN];
+//     while ((ch = getchar()) != '\n')
+//         s[i++] = ch;
+//     s[i] = '\0';
+//     char *string = (char *)malloc(sizeof(char) * (strlen(s) + 1));
+//     return string;
+// }
+
+void get_string(char *s)
+{
+    char ch;
+    int i = 0;
+    while ((ch = getchar()) == ' ')
+        ;
+    do
+    {
+        s[i++] = ch;
+    } while ((ch = getchar()) != '\n');
+    
+    s[i] = '\0';
 }
 
 Command Get_Command()
@@ -96,7 +122,8 @@ void PerformAction(Command command)
 
         break;
     case __switch:
-
+        get_string(input_string);
+        Switch_Directory(input_string);
         break;
     case __create:
 
