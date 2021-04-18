@@ -6,6 +6,10 @@
 #include <string.h>
 #include <stdbool.h>
 
+#define MAX_STRLEN 100
+
+char password[MAX_STRLEN];
+
 enum
 {
     __switch,
@@ -16,6 +20,8 @@ enum
     __submit,
     __compare,
     __use,
+    __INVALID_COMMAND,
+    __EXIT
 };
 
 typedef int Command;
@@ -23,8 +29,8 @@ typedef char *string;
 
 void prompt();
 Command Get_Command();
-PerformAction(Command);
+void PerformAction(Command);
 
-bool AreSame(Command, Command);
+bool AreSame(char *, char *);
 
 #endif

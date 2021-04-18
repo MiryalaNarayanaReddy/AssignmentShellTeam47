@@ -1,21 +1,21 @@
 #include "user.h"
-#include <../switch/switch.h>
-#include <../create/create.h>
-#include <../update/update.h>
-#include <../setup.setup.h>
-#include <../submit/submit.h>
-#include <../compare/compare.h>
-#include <../use/use.h>
+#include "directory.h"
 
-#define MAX_STRLEN 100
+// #include <../switch/switch.h>
+// #include <../create/create.h>
+// #include <../update/update.h>
+// #include <../setup.setup.h>
+// #include <../submit/submit.h>
+// #include <../compare/compare.h>
+// #include <../use/use.h>
 
 void prompt()
 {
     Print_current_directory_path();
-    printf("> ");
+    printf(">");
 }
 
-bool AreSame(Command a, Command b)
+bool AreSame(char *a, char *b)
 {
     if (strcmp(a, b) == 0)
     {
@@ -27,9 +27,14 @@ bool AreSame(Command a, Command b)
 
 Command Get_Command()
 {
-    char input_string[MAX_STRLEN];
-    scanf("%s", &input_string);
-    string command = (string)malloc(sizeof(char) * (strlen(s) + 1));
+    char command[10];
+    scanf("%s", command);
+
+    // printf("%s\n",command);
+    if (AreSame(command, "exit"))
+    {
+        return __EXIT;
+    }
     if (AreSame(command, "switch"))
     {
         return __switch;
@@ -61,11 +66,63 @@ Command Get_Command()
     else
     {
         fflush(stdin);
-        printf("***INVALID COMMAND***");
-        return Get_Command();
+        printf("***INVALID COMMAND***\n");
+        fflush(stdout);
+        return __INVALID_COMMAND;
     }
 }
 
-PerformAction(Command command)
+void PerformAction(Command command)
 {
+    char input_string[MAX_STRLEN];
+    //  scanf("%s", input_string);
+
+    switch (command)
+    {
+    case __EXIT:
+
+        printf("Enter password: ");
+        scanf("%s", input_string);
+        if (AreSame(input_string, password))
+        {
+            exit(EXIT_SUCCESS);
+        }
+        else
+        {
+            printf("Wrong password\n");
+        }
+        break;
+    case __INVALID_COMMAND:
+
+        break;
+    case __switch:
+
+        break;
+    case __create:
+
+        break;
+    case __update:
+
+        break;
+    case __setup:
+
+        break;
+    case __test:
+
+        break;
+    case __submit:
+
+        break;
+    case __compare:
+
+        break;
+    case __use:
+
+        break;
+    default:
+        printf("***SOMTHING IS WRONG***\n");
+        printf("exiting.....\n");
+        exit(EXIT_FAILURE);
+        break;
+    }
 }
