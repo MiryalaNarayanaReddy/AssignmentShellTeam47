@@ -1,7 +1,12 @@
-# Shell
+# switch <subject>
 
-## manages all tasks to be done based on command.
+This switchs the subject when the following command is used
 
-only enter the commands like ``switch.``
+```
+animesh/dsa> switch <digital systems microcontrollers>
 
-Not with the extra tag like ``switch dsa.``
+animesh/dsm> switch <linear algebra>
+
+animesh/la> 
+
+```
