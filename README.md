@@ -108,7 +108,7 @@ user/Linear Algebra>
 
 # use
 
-# some references to headers
+## some references to headers
 
 
 - [stdio.h](https://en.wikipedia.org/wiki/C_file_input/output) 
@@ -128,3 +128,7 @@ user/Linear Algebra>
 ```
   |__mkdir
 ```
+## references on some files
+- [.gitignore](https://www.pluralsight.com/guides/how-to-use-gitignore-file)
+
+- [make file]()
