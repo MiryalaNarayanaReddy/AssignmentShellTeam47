@@ -132,3 +132,19 @@ user/Linear Algebra>
 - [.gitignore](https://www.pluralsight.com/guides/how-to-use-gitignore-file)
 
 - [make file]()
+
+## lost your prompt color
+- when prompt color lost what should you do ?
+use command
+```
+nano ~/.bashrc
+```
+then paste everything in `etc/kel/.bashrc` file into terminal(if you can't see the file use `ctr-h` then you will see it along with other '.' files)
+save exit
+then compile
+```
+source ~/.bashrc
+```
+for more understanding look at the following links(both).They will surely give you more idea.
+[link1](https://askubuntu.com/questions/404424/how-do-i-restore-bashrc-to-its-default)
+[link2](https://linuxhostsupport.com/blog/how-to-change-the-color-of-your-linux-prompt/)
