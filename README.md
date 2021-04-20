@@ -107,3 +107,24 @@ user/Linear Algebra>
 # compare
 
 # use
+
+# some references to headers
+
+
+- [stdio.h](https://en.wikipedia.org/wiki/C_file_input/output) 
+```
+  |__fopen
+  |__fclose
+```
+- [dirent.h](https://en.wikibooks.org/wiki/C_Programming/POSIX_Reference/dirent.h)
+
+```
+  |__opendir
+  |__closedir
+  |__struct dirent*
+```
+- [sys/stat.h ,sys/types.h ,unistd.h]()
+
+```
+  |__mkdir
+```

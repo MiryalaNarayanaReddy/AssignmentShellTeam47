@@ -6,7 +6,6 @@
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <unistd.h>
-#include <errno.h>
 
 void Switch_Directory(char *input_string)
 {
@@ -27,14 +26,9 @@ bool DoesDirectoryExist()
         closedir(curr_dir);
         return true; //directory exists
     }
-    else if (ENOENT == errno)
+    else
     {
         return false; //directory does not exist
-    }
-    else 
-    {
-        printf("Something is wrong");
-        return false;
     }
 }
 
