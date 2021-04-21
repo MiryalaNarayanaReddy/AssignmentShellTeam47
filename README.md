@@ -98,6 +98,8 @@ user/Linear Algebra>
 
 # update
 
+- reference [listing directories](https://www.youtube.com/watch?v=j9yL30R6npk)
+
 # setup
 
 # test 
@@ -105,6 +107,24 @@ user/Linear Algebra>
 # submit
 
 # compare
+
+- reference [md5sum](https://www.a2hosting.in/kb/developer-corner/linux/working-with-file-checksums)
+
+`Note`:you don't need any account as mention in above link.
+
+use the following command
+
+```
+name@name-system-name:~$ md5sum switch/switch.c  > md5sums.txt
+
+```
+comment one line in switch.c and then run the following command
+
+```
+name@name-system-name:~$ md5sum switch/switch.c  > md5sums1.txt
+
+```
+you will see both are different that shows that the file is corrupt(not the same or modified).
 
 # use
 
@@ -131,11 +151,13 @@ user/Linear Algebra>
 ## references on some files
 - [.gitignore](https://www.pluralsight.com/guides/how-to-use-gitignore-file)
 
-- [make file]()
+- [makefile](https://www.cs.colby.edu/maxwell/courses/tutorials/maketutor/).read only makefile1 to get an idea. others are for extra knowledge.
 
 ## lost your prompt color
 - when prompt color lost what should you do ?
+
 use command
+
 ```
 nano ~/.bashrc
 ```
