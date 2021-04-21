@@ -148,3 +148,7 @@ source ~/.bashrc
 for more understanding look at the following links(both).They will surely give you more idea.
 [link1](https://askubuntu.com/questions/404424/how-do-i-restore-bashrc-to-its-default)
 [link2](https://linuxhostsupport.com/blog/how-to-change-the-color-of-your-linux-prompt/)
+
+### how to use git inside VScode
+
+- [git](https://www.youtube.com/watch?v=F2DBSH2VoHQ)
