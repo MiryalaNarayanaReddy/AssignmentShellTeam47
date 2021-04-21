@@ -174,3 +174,11 @@ for more understanding look at the following links(both).They will surely give y
 ### how to use git inside VScode
 
 - [git](https://www.youtube.com/watch?v=F2DBSH2VoHQ)
+
+### wanna have online VScode experience
+
+- [github1s](https://github1s.com/).
+
+- just replace `github.com` with `github1s.com` in browser tab then enter.
+- now you will see vs environment.(but its readonly)
+- so you see the bottom `Develop your own project on gipod`  click on it.
