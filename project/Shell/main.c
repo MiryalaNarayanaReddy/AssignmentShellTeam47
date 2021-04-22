@@ -9,14 +9,15 @@ int main()
     printf("Enter Password : ");
     scanf("%s", password);
 
-    InitializePath();
-    prompt();
+    //InitializePath();
+    InitializeDirec();
+  //  prompt();
     Command command;
 
     while (true)
     {
         command = Get_Command();
         PerformAction(command);
-        prompt();
+       // prompt();
     }
 }

@@ -9,11 +9,11 @@
 // #include <../compare/compare.h>
 // #include <../use/use.h>
 
-void prompt()
-{
-    Print_current_directory_path();
-    printf(">");
-}
+// void prompt()
+// {
+//     Print_current_directory_path();
+//     printf(">");
+// }
 
 bool AreSame(char *a, char *b)
 {
@@ -123,7 +123,7 @@ void PerformAction(Command command)
         break;
     case __switch:
         get_string(input_string);
-        Switch_Directory(input_string);
+      //  Switch_Directory(input_string);
         break;
     case __create:
 
