@@ -10,27 +10,29 @@
 
 void Switch_Directory(PtrToDirec root, char *input_string)
 {
-    bool exits = DoesDirectoryExist(root, input_string);
-    if (!exits)
+    PtrToDirec temp = FindDirectory(root, input_string);
+    if (temp == NULL)
     {
         PtrToDirec new_dir = NewDirec(input_string);
         assert(new_dir);
+
         new_dir->Next = root->PtrToSubDirecs;
         root->PtrToSubDirecs = new_dir;
+
         strcpy(root->PtrToSubDirecs->Path, root->Path);
         strcat(root->PtrToSubDirecs->Path, "/");
         strcat(root->PtrToSubDirecs->Path, input_string);
-    }
+        strcpy(PATH_OF_CURRENT_DIRECTORY, root->PtrToSubDirecs->Path);
 
-    strcpy(PATH_OF_CURRENT_DIRECTORY, root->PtrToSubDirecs->Path);
-
-    if (!exits)
-    {
         CreateNewDirectory();
+    }
+    else
+    {
+        strcpy(PATH_OF_CURRENT_DIRECTORY, temp->Path);
     }
 }
 
-bool DoesDirectoryExist(PtrToDirec root, char *dir_name)
+PtrToDirec FindDirectory(PtrToDirec root, char *dir_name)
 {
     PtrToDirec temp = root->PtrToSubDirecs;
 
@@ -38,13 +40,17 @@ bool DoesDirectoryExist(PtrToDirec root, char *dir_name)
     {
         return false;
     }
-    while (temp != NULL)
+    while (temp->Next != NULL)
     {
         if (AreSame(dir_name, temp->Name))
         {
-            return true;
+            return temp;
         }
         temp = temp->Next;
+    }
+    if (AreSame(dir_name, temp->Name))
+    {
+        return temp;
     }
     return false;
 }

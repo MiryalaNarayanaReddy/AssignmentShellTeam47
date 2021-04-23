@@ -7,8 +7,8 @@
 #include <dirent.h>
 #include <stdbool.h>
 
-#define MAX_LEN_NAME 31
-#define MAX_PATH_LEN 1000
+#define MAX_LEN_NAME 1000
+#define MAX_PATH_LEN 10000
 
 typedef struct Directory Direc;
 typedef struct Directory *PtrToDirec;

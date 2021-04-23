@@ -3,8 +3,13 @@
 
 #include "../Shell/user.h"
 
-bool DoesDirectoryExist(PtrToDirec root, char *dir_name);
-void CreateNewDirectory();
+
 void Switch_Directory(PtrToDirec root, char *input_string);
+
+PtrToDirec FindDirectory(PtrToDirec root, char *dir_name);
+/* searches only subdirectory names in root directory */
+
+void CreateNewDirectory();
+//really creates directory
 
 #endif
