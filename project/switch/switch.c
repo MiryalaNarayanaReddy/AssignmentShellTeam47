@@ -6,33 +6,50 @@
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <unistd.h>
+#include <assert.h>
 
-void Switch_Directory(char *input_string)
+void Switch_Directory(PtrToDirec root, char *input_string)
 {
-    PATH_OF_CURRENT_DIRECTORY[7] = '/';
-    PATH_OF_CURRENT_DIRECTORY[8] = '\0';
-    strcat(PATH_OF_CURRENT_DIRECTORY, input_string);
-    if (!DoesDirectoryExist())
+    bool exits = DoesDirectoryExist(root, input_string);
+    if (!exits)
     {
-        NewDirectory();
+        PtrToDirec new_dir = NewDirec(input_string);
+        assert(new_dir);
+        new_dir->Next = root->PtrToSubDirecs;
+        root->PtrToSubDirecs = new_dir;
+        strcpy(root->PtrToSubDirecs->Path, root->Path);
+        strcat(root->PtrToSubDirecs->Path, "/");
+        strcat(root->PtrToSubDirecs->Path, input_string);
+    }
+
+    strcpy(PATH_OF_CURRENT_DIRECTORY, root->PtrToSubDirecs->Path);
+
+    if (!exits)
+    {
+        CreateNewDirectory();
     }
 }
 
-bool DoesDirectoryExist()
+bool DoesDirectoryExist(PtrToDirec root, char *dir_name)
 {
-    DIR *curr_dir = opendir(PATH_OF_CURRENT_DIRECTORY);
-    if (curr_dir)
+    PtrToDirec temp = root->PtrToSubDirecs;
+
+    if (temp == NULL)
     {
-        closedir(curr_dir);
-        return true; //directory exists
+        return false;
     }
-    else
+    while (temp != NULL)
     {
-        return false; //directory does not exist
+        if (AreSame(dir_name, temp->Name))
+        {
+            return true;
+        }
+        temp = temp->Next;
     }
+    return false;
 }
 
-void NewDirectory()
+void CreateNewDirectory()
 {
     mkdir(PATH_OF_CURRENT_DIRECTORY, 0700);
     DIR *curr_dir = opendir(PATH_OF_CURRENT_DIRECTORY);

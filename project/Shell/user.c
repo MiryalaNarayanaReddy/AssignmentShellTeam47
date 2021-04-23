@@ -1,7 +1,7 @@
 #include "user.h"
 #include "directory.h"
-#include "../switch/switch.h"
 
+#include "../switch/switch.h"
 // #include "../create/create.h"
 // #include "../update/update.h"
 // #include "../setup.setup.h"
@@ -86,7 +86,7 @@ Command Get_Command()
     }
 }
 
-void PerformAction(Command command)
+void PerformAction(PtrToDirec root, Command command)
 {
     char input_string[MAX_STRLEN];
     //  scanf("%s", input_string);
@@ -111,7 +111,7 @@ void PerformAction(Command command)
         break;
     case __switch:
         get_string(input_string);
-        //  Switch_Directory(input_string);
+        Switch_Directory(root,input_string);
         break;
     case __create:
 

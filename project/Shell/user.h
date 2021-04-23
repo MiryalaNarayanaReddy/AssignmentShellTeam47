@@ -5,6 +5,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <stdbool.h>
+#include "directory.h"
 
 #define MAX_STRLEN 100
 
@@ -32,7 +33,7 @@ typedef char *string;
 
 void prompt();
 Command Get_Command();
-void PerformAction(Command);
+void PerformAction(PtrToDirec root, Command command);
 
 bool AreSame(char *, char *);
 

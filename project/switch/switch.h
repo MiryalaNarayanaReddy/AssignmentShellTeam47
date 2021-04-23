@@ -3,7 +3,8 @@
 
 #include "../Shell/user.h"
 
-bool DoesDirectoryExist();
-void NewDirectory();
-void Switch_Directory(char *);
+bool DoesDirectoryExist(PtrToDirec root, char *dir_name);
+void CreateNewDirectory();
+void Switch_Directory(PtrToDirec root, char *input_string);
+
 #endif

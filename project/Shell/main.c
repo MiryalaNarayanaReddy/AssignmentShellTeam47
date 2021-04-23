@@ -9,7 +9,7 @@ int main()
   printf("Enter Password : ");
   scanf("%s", password);
 
-  PtrToDirec direc_tree = InitializeDirecTree("assignment", "../../");
+  PtrToDirec direc_tree = InitializeDirecTree("user", "../../user");
   printf("\nyour direc tree \n\n");
   PrintDirecTree(direc_tree, 0, __print_name);
   printf("\n\n");
@@ -21,7 +21,7 @@ int main()
   while (true)
   {
     command = Get_Command();
-    PerformAction(command);
+    PerformAction(direc_tree, command);
     prompt();
   }
 }
