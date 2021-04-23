@@ -1,4 +1,5 @@
 #include "directory.h"
+#include "user.h"
 
 PtrToDirec NewDirec(char name[])
 {
@@ -26,7 +27,9 @@ void ListDirecs(PtrToDirec root)
 
     while (curr_dir != NULL)
     {
-        if (strcmp(curr_dir->d_name, ".") != 0 && strcmp(curr_dir->d_name, "..") != 0)
+        /*ignore ".git" folder we don't need it*/
+        /*. and .. folders cause infinite recurrsion*/
+        if (strcmp(curr_dir->d_name, ".") != 0 && strcmp(curr_dir->d_name, "..") != 0 && strcmp(curr_dir->d_name, ".git") != 0)
         {
             if (curr_dir->d_type == DT_DIR)
             {
@@ -46,7 +49,7 @@ void ListDirecs(PtrToDirec root)
 
                 //   printf("%s\n", curr_dir->d_name);
 
-                ListDirecs(root->PtrToSubDirecs);
+                ListDirecs(root->PtrToSubDirecs); //list the subdirectories
             }
             else
             {
@@ -60,6 +63,9 @@ void ListDirecs(PtrToDirec root)
                     temp->Next = root->PtrToSubFiles;
                     root->PtrToSubFiles = temp;
                 }
+                strcpy(root->PtrToSubFiles->Path, root->Path);
+                strcat(root->PtrToSubFiles->Path, "/");
+                strcat(root->PtrToSubFiles->Path, curr_dir->d_name);
                 // printf("%s\n", curr_dir->d_name);
             }
         }
@@ -68,57 +74,71 @@ void ListDirecs(PtrToDirec root)
     closedir(dir);
 }
 
-void print_direc_tree(PtrToDirec root, int depth)
+void _print_spaces(int Number)
 {
-    PtrToDirec temp = root;
-    if (depth > 0)
-        for (int i = 0; i < depth; i++)
+    if (Number > 0)
+        for (int i = 0; i < Number; i++)
         {
             printf(" ");
         }
-    printf("%s\n", root->Name);
+}
+
+void PrintDirecTree(PtrToDirec root, int depth, int choice)
+{
+    if (root == NULL)
+        return;
+    PtrToDirec temp = root;
+
+    _print_spaces(depth);
+    if (choice == __print_path)
+    {
+        printf("%s\n", root->Path);
+    }
+    else if (choice == __print_name)
+    {
+        printf("%s\n", root->Name);
+    }
+    else if (choice == __print_name_and_path)
+    {
+        printf("%s ------- path = %s\n", root->Name, root->Path);
+    }
 
     depth++;
     temp = root->PtrToSubDirecs;
 
     while (temp != NULL)
     {
-        for (int i = 0; i < depth; i++)
-        {
-            printf(" ");
-        }
-        print_direc_tree(temp, depth);
+        _print_spaces(depth);
+        PrintDirecTree(temp, depth, choice);
         temp = temp->Next;
     }
     temp = root->PtrToSubFiles;
     while (temp != NULL)
     {
-        for (int i = 0; i < depth; i++)
-        {
-            printf(" ");
-        }
-        print_direc_tree(temp, depth);
+        _print_spaces(depth);
+        PrintDirecTree(temp, depth, choice);
         temp = temp->Next;
     }
 }
 
-PtrToDirec InitializeDirec()
+PtrToDirec InitializeDirecTree(char name[], char root_path[])
 {
-    PtrToDirec DirecTree = NewDirec("user");
-    strcpy(DirecTree->Path, "../../user");
+    PtrToDirec DirecTree = NewDirec(name);
+    strcpy(DirecTree->Path, root_path);
     ListDirecs(DirecTree);
-    print_direc_tree(DirecTree, 0);
+    return DirecTree;
 }
 
-// void InitializePath()
-// {
-//     strcpy(PATH_OF_CURRENT_DIRECTORY, "../user");
-// }
-// void Print_current_directory_path()
-// {
-//     int i = 3;
-//     while (PATH_OF_CURRENT_DIRECTORY[i] != '\0')
-//     {
-//         printf("%c", PATH_OF_CURRENT_DIRECTORY[i++]);
-//     }
-// }
+void InitializePath()
+{
+    strcpy(PATH_OF_CURRENT_DIRECTORY, "../../user");
+}
+
+void Print_current_directory_path()
+{
+    int i = 6;
+    while (PATH_OF_CURRENT_DIRECTORY[i] != '\0')
+    {
+        printf("%c", PATH_OF_CURRENT_DIRECTORY[i++]);
+    }
+}

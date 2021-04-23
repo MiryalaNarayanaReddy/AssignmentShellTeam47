@@ -2,18 +2,18 @@
 #include "directory.h"
 #include "../switch/switch.h"
 
-// #include <../create/create.h>
-// #include <../update/update.h>
-// #include <../setup.setup.h>
-// #include <../submit/submit.h>
-// #include <../compare/compare.h>
-// #include <../use/use.h>
+// #include "../create/create.h"
+// #include "../update/update.h"
+// #include "../setup.setup.h"
+// #include ".../submit/submit.h"
+// #include "../compare/compare.h"
+// #include "../use/use.h"
 
-// void prompt()
-// {
-//     Print_current_directory_path();
-//     printf(">");
-// }
+void prompt()
+{
+    Print_current_directory_path();
+    printf(">");
+}
 
 bool AreSame(char *a, char *b)
 {
@@ -25,18 +25,6 @@ bool AreSame(char *a, char *b)
         return false;
 }
 
-// char *get_string()
-// {
-//     char ch;
-//     int i = 0;
-//     char s[MAX_STRLEN];
-//     while ((ch = getchar()) != '\n')
-//         s[i++] = ch;
-//     s[i] = '\0';
-//     char *string = (char *)malloc(sizeof(char) * (strlen(s) + 1));
-//     return string;
-// }
-
 void get_string(char *s)
 {
     char ch;
@@ -47,7 +35,7 @@ void get_string(char *s)
     {
         s[i++] = ch;
     } while ((ch = getchar()) != '\n');
-    
+
     s[i] = '\0';
 }
 
@@ -123,7 +111,7 @@ void PerformAction(Command command)
         break;
     case __switch:
         get_string(input_string);
-      //  Switch_Directory(input_string);
+        //  Switch_Directory(input_string);
         break;
     case __create:
 

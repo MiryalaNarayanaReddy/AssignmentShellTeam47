@@ -21,7 +21,10 @@ enum
     __compare,
     __use,
     __INVALID_COMMAND,
-    __EXIT
+    __EXIT,
+    __print_path,
+    __print_name,
+    __print_name_and_path
 };
 
 typedef int Command;

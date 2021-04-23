@@ -5,7 +5,9 @@
 #include <stdlib.h>
 #include <string.h>
 #include <dirent.h>
-#define MAX_LEN_NAME 21
+#include <stdbool.h>
+
+#define MAX_LEN_NAME 31
 #define MAX_PATH_LEN 1000
 
 typedef struct Directory Direc;
@@ -20,14 +22,14 @@ struct Directory
     Direc *Next;
 };
 
-PtrToDirec NewDirec(char name[]);
-PtrToDirec InitializeDirec();
+PtrToDirec NewDirec(char name[]);//makes a new node
+PtrToDirec InitializeDirecTree(char name[], char root_path[]);
+/* calls ListDirecs to make the directory tree recurrsively */
+void ListDirecs(PtrToDirec root);
+void PrintDirecTree(PtrToDirec root, int depth,int choice);//prints the directory tree 
 
-// define MAX_PATH_LEN 1000
-
-// char PATH_OF_CURRENT_DIRECTORY[MAX_PATH_LEN];
-
-// void InitializePath();
-// void Print_current_directory_path();
+char PATH_OF_CURRENT_DIRECTORY[MAX_PATH_LEN];
+void Print_current_directory_path();
+void InitializePath();
 
 #endif
