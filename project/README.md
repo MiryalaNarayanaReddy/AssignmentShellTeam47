@@ -29,7 +29,7 @@ This contains the following folder structure
 |      |__
 |
 |__test
-|      |__
+|      |__ test.c and test.h
 |      |__
 |
 |__submit
@@ -56,19 +56,11 @@ make
 make clean
 ./main
 ```
-you will be asked for password. Enter any and you will be asked for it only when exiting from the program.
-
-You don't need to use the same password  every time(its not a login page).
-
 You will see something like below
 
 ```
-name@name-system-name:./main
-The password you are entering is temporary.
-Use it to exit from the program
-Enter Password : 1234
+name@name-system-name:~$./main
 user>
-
 ```
 you enter your commands for the prompt `user>`
 commands you can use are as follows

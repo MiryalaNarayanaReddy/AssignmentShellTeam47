@@ -22,13 +22,14 @@ struct Directory
     Direc *Next;
 };
 
-PtrToDirec NewDirec(char name[]);//makes a new node
+PtrToDirec NewDirec(char name[]); //makes a new node
 PtrToDirec InitializeDirecTree(char name[], char root_path[]);
 /* calls ListDirecs to make the directory tree recurrsively */
 void ListDirecs(PtrToDirec root);
-void PrintDirecTree(PtrToDirec root, int depth,int choice);//prints the directory tree 
+void PrintDirecTree(PtrToDirec root, int depth, int choice); //prints the directory tree
 
 char PATH_OF_CURRENT_DIRECTORY[MAX_PATH_LEN];
+PtrToDirec CURRENT_DIRECTORY;
 void Print_current_directory_path();
 void InitializePath();
 

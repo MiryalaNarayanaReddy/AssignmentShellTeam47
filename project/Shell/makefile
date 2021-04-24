@@ -1,5 +1,5 @@
-main : main.o directory.o switch.o user.o
-	gcc main.o directory.o switch.o user.o -o main
+main : main.o directory.o switch.o test.o user.o
+	gcc main.o directory.o switch.o test.o user.o -o main
 
 main.o :main.c
 	gcc -c main.c
@@ -12,6 +12,9 @@ user.o : user.c
 
 switch.o : ../switch/switch.c
 	gcc -c ../switch/switch.c
+
+test.o : ../test/test.c
+	gcc -c ../test/test.c
 
 clean:
 	rm *.o

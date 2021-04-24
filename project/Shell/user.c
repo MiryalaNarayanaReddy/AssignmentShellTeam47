@@ -6,6 +6,7 @@
 // #include "../update/update.h"
 // #include "../setup.setup.h"
 // #include ".../submit/submit.h"
+#include "../test/test.h"
 // #include "../compare/compare.h"
 // #include "../use/use.h"
 
@@ -63,6 +64,10 @@ Command Get_Command()
     }
     else if (AreSame(command, "setup"))
     {
+        return __setup;
+    }
+    else if (AreSame(command, "test"))
+    {
         return __test;
     }
     else if (AreSame(command, "submit"))
@@ -77,6 +82,10 @@ Command Get_Command()
     {
         return __use;
     }
+    else if (AreSame(command, "tree"))
+    {
+        return __tree;
+    }
     else
     {
         fflush(stdin);
@@ -89,29 +98,18 @@ Command Get_Command()
 void PerformAction(PtrToDirec root, Command command)
 {
     char input_string[MAX_STRLEN];
-    //  scanf("%s", input_string);
 
     switch (command)
     {
     case __EXIT:
-
-        printf("Enter password: ");
-        scanf("%s", input_string);
-        if (AreSame(input_string, password))
-        {
-            exit(EXIT_SUCCESS);
-        }
-        else
-        {
-            printf("Wrong password\n");
-        }
+        exit(EXIT_SUCCESS);
         break;
     case __INVALID_COMMAND:
-
+        printf("*** INVALID COMMAND ***\n");
         break;
     case __switch:
         get_string(input_string);
-        Switch_Directory(root,input_string);
+        Switch_Directory(root, input_string);
         break;
     case __create:
 
@@ -123,7 +121,8 @@ void PerformAction(PtrToDirec root, Command command)
 
         break;
     case __test:
-
+        get_string(input_string);
+        test(input_string);
         break;
     case __submit:
 
@@ -133,6 +132,11 @@ void PerformAction(PtrToDirec root, Command command)
         break;
     case __use:
 
+        break;
+    case __tree:
+        printf("\n");
+        PrintDirecTree(CURRENT_DIRECTORY, 0, __print_name);
+        printf("\n");
         break;
     default:
         printf("***SOMTHING IS WRONG***\n");

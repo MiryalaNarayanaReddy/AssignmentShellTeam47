@@ -23,11 +23,12 @@ void Switch_Directory(PtrToDirec root, char *input_string)
         strcat(root->PtrToSubDirecs->Path, "/");
         strcat(root->PtrToSubDirecs->Path, input_string);
         strcpy(PATH_OF_CURRENT_DIRECTORY, root->PtrToSubDirecs->Path);
-
+        CURRENT_DIRECTORY = root->PtrToSubDirecs;
         CreateNewDirectory();
     }
     else
     {
+        CURRENT_DIRECTORY = temp;
         strcpy(PATH_OF_CURRENT_DIRECTORY, temp->Path);
     }
 }

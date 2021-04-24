@@ -9,7 +9,6 @@
 
 #define MAX_STRLEN 100
 
-char password[MAX_STRLEN];
 
 enum
 {
@@ -25,7 +24,8 @@ enum
     __EXIT,
     __print_path,
     __print_name,
-    __print_name_and_path
+    __print_name_and_path,
+    __tree
 };
 
 typedef int Command;
