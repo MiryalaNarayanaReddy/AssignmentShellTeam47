@@ -40,7 +40,7 @@ This contains the following folder structure
 |      |__
 |      |__
 |__use
-|    |__
+|    |__use.c and use.h
 |    |__
 |
 |__ README.md
