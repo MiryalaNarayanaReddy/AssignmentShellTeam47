@@ -8,7 +8,7 @@
 // #include ".../submit/submit.h"
 #include "../test/test.h"
 // #include "../compare/compare.h"
-// #include "../use/use.h"
+#include "../use/use.h"
 
 void prompt()
 {
@@ -82,6 +82,10 @@ Command Get_Command()
     {
         return __use;
     }
+    else if (AreSame(command, "back"))
+    {
+        return __back;
+    }
     else if (AreSame(command, "tree"))
     {
         return __tree;
@@ -131,7 +135,11 @@ void PerformAction(PtrToDirec root, Command command)
 
         break;
     case __use:
-
+        get_string(input_string);
+        use(input_string);
+        break;
+    case __back:
+        change_dir_back();
         break;
     case __tree:
         printf("\n");
