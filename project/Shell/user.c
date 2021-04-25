@@ -2,7 +2,7 @@
 #include "directory.h"
 
 #include "../switch/switch.h"
-// #include "../create/create.h"
+#include "../create/create.h"
 // #include "../update/update.h"
 // #include "../setup.setup.h"
 // #include ".../submit/submit.h"
@@ -116,7 +116,8 @@ void PerformAction(PtrToDirec root, Command command)
         Switch_Directory(root, input_string);
         break;
     case __create:
-
+        get_string(input_string);
+        create(input_string);
         break;
     case __update:
 

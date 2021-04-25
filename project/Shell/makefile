@@ -1,5 +1,5 @@
-main : main.o directory.o switch.o test.o user.o use.o
-	gcc main.o directory.o switch.o test.o user.o  use.o -o main
+main : main.o directory.o switch.o test.o user.o use.o create.o
+	gcc main.o directory.o switch.o test.o user.o  use.o create.o -o main
 
 main.o :main.c
 	gcc -c main.c
@@ -18,6 +18,9 @@ test.o : ../test/test.c
 
 use.o : ../use/use.c
 	gcc -c ../use/use.c
+
+create.o : ../create/create.c
+	gcc -c ../create/create.c
 
 clean:
 	rm *.o
