@@ -25,7 +25,8 @@ enum
     __print_path,
     __print_name,
     __print_name_and_path,
-    __tree
+    __tree,
+    __back
 };
 
 typedef int Command;
