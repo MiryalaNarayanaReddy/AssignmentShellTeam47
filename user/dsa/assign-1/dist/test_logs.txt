@@ -1,4 +1,9 @@
 hello world
+
+ERROR: you are printing 100 squares 
+
+I want only 9 donot include "0 x 0 = 0"
+
 0 x 0 = 0
 1 x 1 = 1
 2 x 2 = 4

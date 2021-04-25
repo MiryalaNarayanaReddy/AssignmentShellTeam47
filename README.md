@@ -5,7 +5,7 @@ we have three main folder in this
 ```
 project
 
-dist
+assigment
 
 user
 
@@ -14,9 +14,17 @@ user
 
 This folder contains the code.
 
-# dist
+# assignment
 
- This contains test ( assigment ) files
+ This contains 
+ |
+ |__dist folder 
+ |         | 
+ |         |__submitter.py
+ |
+ |__assigment.pdf files
+ |
+ |__code.c etc files
 
 # user
 

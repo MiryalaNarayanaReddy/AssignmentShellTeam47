@@ -8,22 +8,22 @@
 #include "../Shell/directory.h"
 #include "../Shell/user.h"
 #include "../switch/switch.h"
+#include "../Shell/directory.h"
 
-void Execute(char name[])
+void Execute(PtrToDirec name, PtrToDirec dist_folder)
 {
     char exe_command[MAX_PATH_LEN];
     strcpy(exe_command, " python3 ");
-    strcat(exe_command, " ../../dist/submitter.py ");
-    strcat(exe_command, " > ../../test_logs_");
-    strcat(exe_command, name);
-    strcat(exe_command, ".txt");
+    strcat(exe_command, name->Path);
+    strcat(exe_command, " > ");
+    strcat(exe_command, dist_folder->Path);
+    strcat(exe_command, "/test_logs.txt");
     system(exe_command);
 }
 
 PtrToDirec FindFile(PtrToDirec root, char *file_name)
 {
     PtrToDirec temp = root->PtrToSubFiles;
-
     if (temp == NULL)
     {
         return false;
@@ -45,15 +45,17 @@ PtrToDirec FindFile(PtrToDirec root, char *file_name)
 
 void test(char *input_string)
 {
-    PtrToDirec dist_tree = InitializeDirecTree("dist", "../../dist");
-    PtrToDirec exists = FindFile(dist_tree, "submitter.py");
-    if (exists == false)
+    PtrToDirec ptrtofolder = FindDirectory(CURRENT_DIRECTORY, input_string);
+    PtrToDirec ptrtodist = FindDirectory(ptrtofolder, "dist");
+    PtrToDirec exists = FindFile(ptrtodist, "submitter.py");
+
+    if (exists == NULL)
     {
         printf("**No such file \"submitter.py\" - missing or removed\n");
         return;
     }
     else
     {
-        Execute(input_string);
+        Execute(exists, ptrtodist);
     }
 }
