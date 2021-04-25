@@ -17,6 +17,8 @@ This folder contains the code.
 # assignment
 
  This contains 
+ 
+ ```
  |
  |__dist folder 
  |         | 
@@ -25,7 +27,8 @@ This folder contains the code.
  |__assigment.pdf files
  |
  |__code.c etc files
-
+ 
+```
 # user
 
 This is the user folder on which operations (switch ,create,submit etc) are done.
