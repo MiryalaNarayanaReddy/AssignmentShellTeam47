@@ -41,7 +41,7 @@ This contains the following folder structure
 |      |__
 |__use
 |    |__use.c and use.h
-|    |__
+|    |__README.md
 |
 |__ README.md
 |__ Mini_Project.pdf
