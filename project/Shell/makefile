@@ -1,5 +1,5 @@
-main : main.o directory.o switch.o test.o user.o use.o create.o
-	gcc main.o directory.o switch.o test.o user.o  use.o create.o -o main
+main : main.o directory.o switch.o test.o user.o use.o create.o submit.o
+	gcc main.o directory.o switch.o test.o user.o  use.o create.o submit.o -o main
 
 main.o :main.c
 	gcc -c main.c
