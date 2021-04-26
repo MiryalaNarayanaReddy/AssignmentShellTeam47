@@ -5,7 +5,7 @@
 #include "../create/create.h"
 // #include "../update/update.h"
 // #include "../setup.setup.h"
-// #include ".../submit/submit.h"
+#include ".../submit/submit.h"
 #include "../test/test.h"
 // #include "../compare/compare.h"
 #include "../use/use.h"
@@ -93,7 +93,7 @@ Command Get_Command()
     else
     {
         fflush(stdin);
-        printf("***INVALID COMMAND***\n");
+        //printf("***INVALID COMMAND***\n");
         fflush(stdout);
         return __INVALID_COMMAND;
     }
@@ -130,7 +130,8 @@ void PerformAction(PtrToDirec root, Command command)
         test(input_string);
         break;
     case __submit:
-
+        get_string(input_string);
+        zipper(input_string);
         break;
     case __compare:
 
