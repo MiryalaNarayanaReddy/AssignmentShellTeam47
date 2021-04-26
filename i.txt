@@ -1,0 +1,19 @@
+tree
+ sub1
+  subsub1_1
+   qwer
+   derf
+  subsub1_2
+ sub2
+  subsub2_1
+   yuiop
+   lop
+  subsub2_2
+   dfg
+   bghj
+ sub3
+  see
+  verify
+ sub4
+  done
+  good

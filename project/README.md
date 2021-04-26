@@ -25,7 +25,7 @@ This contains the following folder structure
 |      |__
 |
 |__setup
-|      |__
+|      |__setup.c and setup.h
 |      |__
 |
 |__test
@@ -74,6 +74,14 @@ commands you can use are as follows
 - reference [listing directories](https://www.youtube.com/watch?v=j9yL30R6npk)
 
 # setup
+  this is independent of current directory path.
+  give the path of indented text file (relative to main.c in Shell folder) as second argument.
+  
+  ```
+  user>setup ../../i.txt
+  user>
+  ``` 
+  this will create the required indented tree directory structure(of structure in i.txt) <u> outside project folder</u> (this is hard coded path).
 
 # test 
 

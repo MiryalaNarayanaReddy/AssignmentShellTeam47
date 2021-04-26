@@ -1,7 +1,7 @@
 # link
 
-main :  main.o directory.o user.o switch.o test.o use.o create.o submit.o
-	gcc  main.o directory.o user.o switch.o test.o use.o create.o submit.o -o main
+main :  main.o directory.o user.o switch.o test.o use.o create.o submit.o setup.o
+	gcc  main.o directory.o user.o switch.o test.o use.o create.o submit.o setup.o -o main
 
 #  Shell
 
@@ -38,6 +38,11 @@ use.o : ../use/use.c
 
 submit.o : ../submit/submit.c
 	gcc -c ../submit/submit.c
+
+# setup
+
+setup.o : ../setup/setup.c
+	gcc -c ../setup/setup.c
 
 # make clean
 

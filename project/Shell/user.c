@@ -4,7 +4,7 @@
 #include "../switch/switch.h"
 #include "../create/create.h"
 // #include "../update/update.h"
-// #include "../setup.setup.h"
+#include "../setup/setup.h"
 #include "../submit/submit.h"
 #include "../test/test.h"
 // #include "../compare/compare.h"
@@ -122,7 +122,8 @@ void PerformAction(PtrToDirec root, Command command)
 
         break;
     case __setup:
-
+        get_string(input_string);
+        setup(input_string);
         break;
     case __test:
         get_string(input_string);
