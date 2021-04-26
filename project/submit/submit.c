@@ -8,7 +8,6 @@ void execute(PtrToDirec name, char *input_string)
     strcat(exe_command, ".zip ");
     strcat(exe_command, name->Path);
 
-    printf("%s\n", exe_command);
     system(exe_command);
 }
 
