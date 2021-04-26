@@ -46,7 +46,17 @@ PtrToDirec FindFile(PtrToDirec root, char *file_name)
 void test(char *input_string)
 {
     PtrToDirec ptrtofolder = FindDirectory(CURRENT_DIRECTORY, input_string);
+    if (ptrtofolder == NULL)
+    {
+        printf("%s is missing\n", input_string);
+        return;
+    }
     PtrToDirec ptrtodist = FindDirectory(ptrtofolder, "dist");
+    if (ptrtodist == NULL)
+    {
+        printf("dist folder is missing\n");
+        return;
+    }
     PtrToDirec exists = FindFile(ptrtodist, "submitter.py");
 
     if (exists == NULL)
@@ -57,5 +67,10 @@ void test(char *input_string)
     else
     {
         Execute(exists, ptrtodist);
+        PtrToDirec logs_file = NewDirec("test_logs.txt");
+        logs_file->Next = ptrtodist->PtrToSubFiles;
+        ptrtodist->PtrToSubFiles = logs_file;
+        strcpy(logs_file->Path, ptrtodist->Path);
+        strcat(logs_file->Path, "/");
     }
 }

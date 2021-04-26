@@ -1,5 +1,5 @@
 print("hello world")
-print("\nERROR: you are printing 100 squares \n")
+print("\nERROR: you are printing 10 squares \n")
 print("I want only 9 donot include \"0 x 0 = 0\"\n")
 i = 0
 while i < 10:
