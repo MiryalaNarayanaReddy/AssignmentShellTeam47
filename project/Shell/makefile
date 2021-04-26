@@ -21,6 +21,9 @@ use.o : ../use/use.c
 
 create.o : ../create/create.c
 	gcc -c ../create/create.c
+	
+submit.o : ../submit/submit.c
+	gcc -c ../submit/submit.c	
 
 clean:
 	rm *.o
