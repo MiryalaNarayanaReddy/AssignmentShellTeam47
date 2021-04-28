@@ -1,10 +1,22 @@
 #include "../switch/switch.h"
+#include "use.h"
 
-void use(char *input_string)
+bool use(char *input_string)
 {
     PtrToDirec temp = CURRENT_DIRECTORY;
-    Switch_Directory(CURRENT_DIRECTORY, input_string);
-    CURRENT_DIRECTORY = temp;
+    if (FindDirectory(CURRENT_DIRECTORY, input_string) != NULL)
+    {
+        Switch_Directory(CURRENT_DIRECTORY, input_string);
+
+        NEW_CURR_PATH = CURRENT_DIRECTORY;
+        printf("%s \n", NEW_CURR_PATH->Name);
+        CURRENT_DIRECTORY = temp;
+        return true;
+    }
+    else
+    {
+        return false;
+    }
 }
 
 void change_dir_back()
@@ -21,3 +33,4 @@ void change_dir_back()
     }
     PATH_OF_CURRENT_DIRECTORY[LastForwordSlash] = '\0';
 }
+
