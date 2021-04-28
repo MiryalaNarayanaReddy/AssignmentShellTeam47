@@ -33,7 +33,7 @@ This contains the following folder structure
 |      |__
 |
 |__submit
-|      |__
+|      |__submit.c and submit.h
 |      |__
 |
 |__compare
