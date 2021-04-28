@@ -9,7 +9,7 @@ bool use(char *input_string)
         Switch_Directory(CURRENT_DIRECTORY, input_string);
 
         NEW_CURR_PATH = CURRENT_DIRECTORY;
-        printf("%s \n", NEW_CURR_PATH->Name);
+        //printf("%s \n", NEW_CURR_PATH->Name);
         CURRENT_DIRECTORY = temp;
         return true;
     }
