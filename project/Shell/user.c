@@ -10,6 +10,8 @@
 // #include "../compare/compare.h"
 #include "../use/use.h"
 
+bool __using_use = false;
+char use_input_string[MAX_LEN_NAME];
 void prompt()
 {
     Print_current_directory_path();
@@ -111,43 +113,100 @@ void PerformAction(PtrToDirec root, Command command)
         printf("*** INVALID COMMAND ***\n");
         break;
     case __switch:
-        get_string(input_string);
-        Switch_Directory(root, input_string);
+        if (__using_use)
+        {
+            fflush(stdin);
+            Switch_Directory(root, use_input_string);
+        }
+        else
+        {
+            get_string(input_string);
+            Switch_Directory(root, input_string);
+        }
         break;
     case __create:
-        get_string(input_string);
-        create(input_string);
+        if (__using_use)
+        {
+            fflush(stdin);
+            create(use_input_string);
+        }
+        else
+        {
+            get_string(input_string);
+            create(input_string);
+        }
         break;
     case __update:
-        get_string(input_string);
-        update(input_string);
+        if (__using_use)
+        {
+            fflush(stdin);
+            update(use_input_string);
+        }
+        else
+        {
+            get_string(input_string);
+            update(input_string);
+        }
         break;
     case __setup:
         get_string(input_string);
         setup(input_string);
         break;
     case __test:
-        get_string(input_string);
-        test(input_string);
+        if (__using_use)
+        {
+            fflush(stdin);
+            test(use_input_string);
+        }
+        else
+        {
+            get_string(input_string);
+            test(input_string);
+        }
         break;
     case __submit:
-        get_string(input_string);
-        zipper(input_string);
+        if (__using_use)
+        {
+            fflush(stdin);
+            zipper(use_input_string);
+        }
+        else
+        {
+            get_string(input_string);
+            zipper(input_string);
+        }
+
         break;
     case __compare:
 
         break;
     case __use:
         get_string(input_string);
-        use(input_string);
-        break;
-    case __back:
-        change_dir_back();
+        if (use(input_string))
+        {
+            __using_use = true;
+            strcpy(use_input_string, input_string);
+        }
+        else
+        {
+            printf("%s - No such folder\n", input_string);
+        }
         break;
     case __tree:
         printf("\n");
-        PrintDirecTree(CURRENT_DIRECTORY, 0, __print_name);
+        if (__using_use)
+        {
+            PrintDirecTree(NEW_CURR_PATH, 0, __print_name);
+        }
+        else
+        {
+            PrintDirecTree(CURRENT_DIRECTORY, 0, __print_name);
+        }
         printf("\n");
+        break;
+    case __back:
+        change_dir_back();
+        __using_use = false;
         break;
     default:
         printf("***SOMTHING IS WRONG***\n");
