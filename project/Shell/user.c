@@ -3,7 +3,7 @@
 
 #include "../switch/switch.h"
 #include "../create/create.h"
-// #include "../update/update.h"
+#include "../update/update.h"
 #include "../setup/setup.h"
 #include "../submit/submit.h"
 #include "../test/test.h"
@@ -119,7 +119,8 @@ void PerformAction(PtrToDirec root, Command command)
         create(input_string);
         break;
     case __update:
-
+        get_string(input_string);
+        update(input_string);
         break;
     case __setup:
         get_string(input_string);
