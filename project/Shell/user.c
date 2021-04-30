@@ -10,11 +10,34 @@
 // #include "../compare/compare.h"
 #include "../use/use.h"
 
+// ESC[background_colour;Text_colourm output ESC[m”
+
+// \033[    \033[m --->for start and end
+// \e[1m    \e[0m  --->bold test
+// 231 background white color
+
+// red - 31m
+// green - 32m
+// yellow - 33m
+// blue - 34m
+// pink - 35m
+
+void print_in_color(char *string, int color, bool bold)
+{
+    if (bold)
+    {
+        printf("\033[231;%dm\e[1m%s\e[0m\033[m", color, string);
+    }
+    else
+    {
+        printf("\033[231;%dm%s\033[m", color, string);
+    }
+}
 
 void prompt()
 {
     Print_current_directory_path();
-    printf(">");
+    print_in_color(">", BLUE, BOLD);
 }
 
 bool AreSame(char *a, char *b)
@@ -114,10 +137,11 @@ void PerformAction(PtrToDirec root, Command command, bool *using_use)
     switch (command)
     {
     case __EXIT:
+        print_in_color("exiting...\n", PINK, BOLD);
         exit(EXIT_SUCCESS);
         break;
     case __INVALID_COMMAND:
-        printf("*** INVALID COMMAND ***\n");
+        print_in_color("*** INVALID COMMAND ***\n", RED, BOLD);
         break;
     case __switch:
         if (__using_use)
@@ -196,7 +220,10 @@ void PerformAction(PtrToDirec root, Command command, bool *using_use)
         }
         else
         {
-            printf("%s - No such folder\n", input_string);
+
+            char error_str[MAX_LEN_NAME];
+            sprintf(error_str, "%s - No such folder\n", input_string);
+            print_in_color(error_str, RED, NOTBOLD);
         }
         break;
     case __tree:
@@ -216,10 +243,10 @@ void PerformAction(PtrToDirec root, Command command, bool *using_use)
         __using_use = false;
         break;
     default:
-        printf("***SOMTHING IS WRONG***\n");
-        printf("exiting.....\n");
+        print_in_color("***SOMTHING IS WRONG***\n", GREEN, BOLD);
+        print_in_color("exiting.....\n", GREEN, BOLD);
         exit(EXIT_FAILURE);
         break;
     }
-     *using_use = __using_use;
+    *using_use = __using_use;
 }

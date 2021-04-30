@@ -9,6 +9,7 @@
 #include "../Shell/user.h"
 #include "../switch/switch.h"
 #include "../Shell/directory.h"
+#include "../Shell/user.h"
 
 void Execute(PtrToDirec name, PtrToDirec dist_folder)
 {
@@ -24,11 +25,8 @@ void Execute(PtrToDirec name, PtrToDirec dist_folder)
 PtrToDirec FindFile(PtrToDirec root, char *file_name)
 {
     PtrToDirec temp = root->PtrToSubFiles;
-    if (temp == NULL)
-    {
-        return false;
-    }
-    while (temp->Next != NULL)
+
+    while (temp != NULL)
     {
         if (AreSame(file_name, temp->Name))
         {
@@ -36,37 +34,44 @@ PtrToDirec FindFile(PtrToDirec root, char *file_name)
         }
         temp = temp->Next;
     }
-    if (AreSame(file_name, temp->Name))
-    {
-        return temp;
-    }
-    return false;
+    return temp;
 }
 
 void test(char *input_string)
 {
+    char err_message[MAX_LEN_NAME];
     PtrToDirec ptrtofolder = FindDirectory(CURRENT_DIRECTORY, input_string);
     if (ptrtofolder == NULL)
     {
-        printf("%s is missing\n", input_string);
+        sprintf(err_message, "%s is missing\n", input_string);
+        print_in_color(err_message, RED, NOTBOLD);
         return;
     }
     PtrToDirec ptrtodist = FindDirectory(ptrtofolder, "dist");
     if (ptrtodist == NULL)
     {
-        printf("dist folder is missing\n");
+        sprintf(err_message, "dist folder is missing\n");
+        print_in_color(err_message, RED, NOTBOLD);
+
         return;
     }
     PtrToDirec exists = FindFile(ptrtodist, "submitter.py");
 
     if (exists == NULL)
     {
-        printf("**No such file \"submitter.py\" - missing or removed\n");
+        sprintf(err_message, "**No such file \"submitter.py\" - missing or removed\n");
+        print_in_color(err_message, RED, NOTBOLD);
+
         return;
     }
     else
     {
         Execute(exists, ptrtodist);
+
+        if (FindFile(ptrtodist, "test_logs.txt")!=NULL)
+        {
+            return;
+        }
         PtrToDirec logs_file = NewDirec("test_logs.txt");
         logs_file->Next = ptrtodist->PtrToSubFiles;
         ptrtodist->PtrToSubFiles = logs_file;

@@ -6,7 +6,7 @@ PtrToDirec NewDirec(char name[])
     PtrToDirec new_direc = (PtrToDirec)malloc(sizeof(Direc));
     if (new_direc == NULL)
     {
-        printf("**Failed to make new dir node in tree**\n");
+        print_in_color("**Failed to make new dir node in tree**\n", RED, NOTBOLD);
         return NULL;
     }
     strcpy(new_direc->Name, name);
@@ -83,40 +83,56 @@ void _print_spaces(int Number)
         }
 }
 
+void __print_tree_choice(PtrToDirec root, int choice, bool IsDir)
+{
+    char str[MAX_PATH_LEN * 10];
+    int COLOR;
+    if (IsDir)
+    {
+        COLOR = GREEN;
+    }
+    else
+    {
+        COLOR = PINK;
+    }
+    if (choice == __print_path)
+    {
+        sprintf(str, "%s\n", root->Path);
+        print_in_color(str, COLOR, BOLD);
+    }
+    else if (choice == __print_name)
+    {
+        sprintf(str, "%s\n", root->Name);
+        print_in_color(str, COLOR, BOLD);
+    }
+    else if (choice == __print_name_and_path)
+    {
+        sprintf(str, "%s ------- path = %s\n", root->Name, root->Path);
+        print_in_color(str, COLOR, BOLD);
+    }
+}
+
 void PrintDirecTree(PtrToDirec root, int depth, int choice)
 {
     if (root == NULL)
         return;
     PtrToDirec temp = root;
-
-    _print_spaces(depth);
-    if (choice == __print_path)
-    {
-        printf("%s\n", root->Path);
-    }
-    else if (choice == __print_name)
-    {
-        printf("%s\n", root->Name);
-    }
-    else if (choice == __print_name_and_path)
-    {
-        printf("%s ------- path = %s\n", root->Name, root->Path);
-    }
-
     depth++;
     temp = root->PtrToSubDirecs;
 
     while (temp != NULL)
     {
         _print_spaces(depth);
+        __print_tree_choice(temp, choice, true);
         PrintDirecTree(temp, depth, choice);
         temp = temp->Next;
     }
+
     temp = root->PtrToSubFiles;
     while (temp != NULL)
     {
         _print_spaces(depth);
-        PrintDirecTree(temp, depth, choice);
+        __print_tree_choice(temp, choice, false);
         temp = temp->Next;
     }
 }
@@ -136,9 +152,5 @@ void InitializePath()
 
 void Print_current_directory_path()
 {
-    int i = 6;
-    while (PATH_OF_CURRENT_DIRECTORY[i] != '\0')
-    {
-        printf("%c", PATH_OF_CURRENT_DIRECTORY[i++]);
-    }
+    print_in_color(&PATH_OF_CURRENT_DIRECTORY[6], BLUE, BOLD);
 }

@@ -9,7 +9,6 @@
 
 #define MAX_STRLEN 100
 
-
 enum
 {
     __switch,
@@ -34,10 +33,21 @@ typedef char *string;
 
 void prompt();
 Command Get_Command();
-void PerformAction(PtrToDirec root, Command command, bool *using_use);
+void PerformAction(PtrToDirec root, Command command, bool *__using_use);
 
 bool AreSame(char *, char *);
 
 char use_input_string[MAX_LEN_NAME];
+void print_in_color(char *string, int color, bool bold);
+
+#define BLACK 30
+#define RED 31
+#define GREEN 32
+#define YELLOW 33
+#define BLUE 34
+#define PINK 35
+#define TORSQUE 35
+#define BOLD 1
+#define NOTBOLD 0
 
 #endif
