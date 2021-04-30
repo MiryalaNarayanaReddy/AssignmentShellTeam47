@@ -9,6 +9,7 @@
 
 #define MAX_STRLEN 100
 
+
 enum
 {
     __switch,
@@ -33,8 +34,10 @@ typedef char *string;
 
 void prompt();
 Command Get_Command();
-void PerformAction(PtrToDirec root, Command command);
+void PerformAction(PtrToDirec root, Command command, bool *using_use);
 
 bool AreSame(char *, char *);
+
+char use_input_string[MAX_LEN_NAME];
 
 #endif
