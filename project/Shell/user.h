@@ -9,7 +9,6 @@
 
 #define MAX_STRLEN 100
 
-
 enum
 {
     __switch,
