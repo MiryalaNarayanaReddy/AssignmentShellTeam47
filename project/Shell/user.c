@@ -10,8 +10,7 @@
 // #include "../compare/compare.h"
 #include "../use/use.h"
 
-bool __using_use = false;
-char use_input_string[MAX_LEN_NAME];
+
 void prompt()
 {
     Print_current_directory_path();
@@ -40,6 +39,13 @@ void get_string(char *s)
     } while ((ch = getchar()) != '\n');
 
     s[i] = '\0';
+}
+
+void clean_input()
+{
+    char ch;
+    while ((ch = getchar()) != '\n')
+        ;
 }
 
 Command Get_Command()
@@ -100,8 +106,9 @@ Command Get_Command()
     }
 }
 
-void PerformAction(PtrToDirec root, Command command)
+void PerformAction(PtrToDirec root, Command command, bool *using_use)
 {
+    bool __using_use = *using_use;
     char input_string[MAX_STRLEN];
 
     switch (command)
@@ -115,7 +122,7 @@ void PerformAction(PtrToDirec root, Command command)
     case __switch:
         if (__using_use)
         {
-            fflush(stdin);
+            clean_input();
             Switch_Directory(root, use_input_string);
         }
         else
@@ -127,7 +134,7 @@ void PerformAction(PtrToDirec root, Command command)
     case __create:
         if (__using_use)
         {
-            fflush(stdin);
+            clean_input();
             create(use_input_string);
         }
         else
@@ -139,7 +146,7 @@ void PerformAction(PtrToDirec root, Command command)
     case __update:
         if (__using_use)
         {
-            fflush(stdin);
+            clean_input();
             update(use_input_string);
         }
         else
@@ -155,7 +162,7 @@ void PerformAction(PtrToDirec root, Command command)
     case __test:
         if (__using_use)
         {
-            fflush(stdin);
+            clean_input();
             test(use_input_string);
         }
         else
@@ -167,7 +174,7 @@ void PerformAction(PtrToDirec root, Command command)
     case __submit:
         if (__using_use)
         {
-            fflush(stdin);
+            clean_input();
             zipper(use_input_string);
         }
         else
@@ -214,4 +221,5 @@ void PerformAction(PtrToDirec root, Command command)
         exit(EXIT_FAILURE);
         break;
     }
+     *using_use = __using_use;
 }
