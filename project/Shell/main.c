@@ -9,11 +9,11 @@ int main()
   InitializePath();
   prompt();
   Command command;
-
+  bool __using_use = false;
   while (true)
   {
     command = Get_Command();
-    PerformAction(direc_tree, command);
+    PerformAction(direc_tree, command,&__using_use);
     prompt();
   }
 }
