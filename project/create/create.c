@@ -9,14 +9,23 @@
 #include <unistd.h>
 #include <assert.h>
 
-void copy_everthing()
+void copy_everything(char *destination)
 {
+    char command[MAX_PATH_LEN];
+    strcpy(command, "cp -r ");
+    strcat(command, "../../assignment/./");
+    strcat(command, " ");
+    strcat(command, PATH_OF_CURRENT_DIRECTORY);
+    strcat(command, "/./");
+    strcat(command, destination);
+    system(command);
 }
 
 void create(char *input_string)
 {
     MakeNewFolder(input_string);
-    void copy_everthing();
+    copy_everything(input_string);
+   // InitializeDirecTree(input_string, CURRENT_DIRECTORY->Path);
 }
 
 void MakeNewFolder(char *input_string)
