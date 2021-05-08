@@ -10,30 +10,50 @@
 #include <sys/stat.h>
 #include <unistd.h>
 #include <assert.h>
+#include "../create/create.h"
 
 void copy_file(char *source, char *destination)
 {
     char exe_command[MAX_PATH_LEN];
+    char s[MAX_PATH_LEN];
+    char d[MAX_PATH_LEN];
+
     strcpy(exe_command, "cp ");
-    strcat(exe_command, source);
+
+    strcpy(s, source);
+    AddSlashSpaceInSubjectName(s); /////// source
+    strcat(exe_command, s);
+
     strcat(exe_command, " ");
-    strcat(exe_command, destination);
+
+    strcpy(d, destination);
+    AddSlashSpaceInSubjectName(d); ////// destination
+    strcat(exe_command, d);
+
     system(exe_command);
 }
 
 void remove_file(PtrToDirec file)
 {
     char clean_it[MAX_PATH_LEN];
+    char path[MAX_PATH_LEN];
+
     strcpy(clean_it, "rm ");
-    strcat(clean_it, file->Path);
+    strcpy(path, file->Path);
+    AddSlashSpaceInSubjectName(path);
+    strcat(clean_it, path);
+
     system(clean_it);
 }
 
 char *get_last_modified_date(PtrToDirec file)
 {
     char *time = (char *)malloc(sizeof(char) * MAX_LEN_NAME);
+    char path[MAX_PATH_LEN];
     strcpy(time, "stat -c '%y' ");
-    strcat(time, file->Path);
+    strcpy(path,file->Path);
+    AddSlashSpaceInSubjectName(path);
+    strcat(time,path);
 
     FILE *fp = fopen("i.txt", "w");
     fclose(fp);
