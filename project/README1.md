@@ -81,48 +81,48 @@ commands you can use are as follows
    
 
 # create 
- - This command creates a new folder for the assignment, downloads (or copies locally) the contents of the dist folder and the problem statement into the current directory.
+  - This command creates a new folder for the assignment, downloads (or copies locally) the contents of the dist folder and the problem statement into the current directory.
 
- ```
- user>create dsa
- user>
-```
+  ```
+  user>create dsa
+  user>
+  ```
 
-For creating subfolder use the following command.
+  For creating subfolder use the following command.
 
-```
-user/dsa>create assign-1
-user/dsa>
-```
+  ```
+  user/dsa>create assign-1
+  user/dsa>
+  ```
 # update
   
   - This command will replace the old files in assign folder with new ones from assignment folder outside our project folder.
- - i.e if TA changes anything in .pdf file or submitter. py that file in our folder will be replaced by new one
+  - i.e if TA changes anything in .pdf file or submitter. py that file in our folder will be replaced by new one
 
-```
-user/dsa>update assign-1
-user/dsa>
-```
-- This will call check_for_updates()function and calls it recurrsively for every folder in it.
+  ```
+  user/dsa>update assign-1
+  user/dsa>
+  ```
+ - This will call check_for_updates()function and calls it recurrsively for every folder in it.
 
-- and for files inside each folder it gets its time of last modification.
+ - and for files inside each folder it gets its time of last modification.
 
-- if the time of last modification is more than time of downloding(copying) of our file in assign-1 folder....
-then it removes that file and copies the new one into our assign-1 folder.
+ - if the time of last modification is more than time of downloding(copying) of our file in assign-1 folder....
+   then it removes that file and copies the new one into our assign-1 folder.
 
 `Note:` 
 
-- if new files are added then it will add them...
-- if a file is edited then it will add them.
-- this will not update any folders if newones are added
-- if file is removed then it will not be removed in our folder.
-- if user modifies his assign-1 folder files then it may not modify them..
-- reference [listing directories](https://www.youtube.com/watch?v=j9yL30R6npk)
+ - if new files are added then it will add them...
+ - if a file is edited then it will add them.
+ - this will not update any folders if newones are added
+ - if file is removed then it will not be removed in our folder.
+ - if user modifies his assign-1 folder files then it may not modify them..
+ - reference [listing directories](https://www.youtube.com/watch?v=j9yL30R6npk)
 
 
 # setup
-  this is independent of current directory path.
-  give the path of indented text file (relative to main.c in Shell folder) as second argument.
+ - this is independent of current directory path.
+   give the path of indented text file (relative to main.c in Shell folder) as second argument.
   
   ```
   user>setup ../../i.txt
@@ -155,13 +155,13 @@ name@name-system-name:~$ md5sum switch/switch.c  > md5sums1.txt
 you will see both are different that shows that the file is corrupt(not the same or modified).
 
 # use
- -This command changes the prompt to ``` user/folder/<assignment>```
+ - This command changes the prompt to ``` user/folder/<assignment>```
 
- ```
- user>switch dsa
-user/dsa>use assign-1
-user/dsa/assign-1>
-```
+  ```
+  user>switch dsa
+  user/dsa>use assign-1
+  user/dsa/assign-1>
+  ```
 
 
 ## some references to headers
