@@ -25,13 +25,14 @@ enum
     __print_name,
     __print_name_and_path,
     __tree,
-    __back
+    __back,
+    __clear_screen,
 };
 
 typedef int Command;
 typedef char *string;
 
-void prompt();
+void prompt(bool abbreviate_subject);
 Command Get_Command();
 void PerformAction(PtrToDirec root, Command command, bool *__using_use);
 

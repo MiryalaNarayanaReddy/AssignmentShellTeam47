@@ -22,6 +22,7 @@
 // blue - 34m
 // pink - 35m
 
+// prints the given string in specified color and in bold if bold is true.
 void print_in_color(char *string, int color, bool bold)
 {
     if (bold)
@@ -34,12 +35,15 @@ void print_in_color(char *string, int color, bool bold)
     }
 }
 
-void prompt()
+//This will use two functions to print the prompt.
+
+void prompt(bool abbreviate_subject)
 {
-    Print_current_directory_path();
+    Print_current_directory_path(abbreviate_subject);
     print_in_color(">", BLUE, BOLD);
 }
 
+//checks if two strings are same.
 bool AreSame(char *a, char *b)
 {
     if (strcmp(a, b) == 0)
@@ -50,27 +54,32 @@ bool AreSame(char *a, char *b)
         return false;
 }
 
+//gets the whole string upto end of line leaving trailing white spaces.
 void get_string(char *s)
 {
     char ch;
     int i = 0;
-    while ((ch = getchar()) == ' ')
+    while ((ch = getchar()) == ' ') // to remove spaces in the begining
         ;
     do
     {
         s[i++] = ch;
     } while ((ch = getchar()) != '\n');
-
+    while (s[i - 1] == ' ') //to remove the spaces at the end
+    {
+        i--;
+    }
     s[i] = '\0';
 }
 
-void clean_input()
+void clean_input() //clears the input buffer in one line upto '\n'
 {
     char ch;
     while ((ch = getchar()) != '\n')
         ;
 }
 
+// gets the command a string and returns an encoded number for given string.
 Command Get_Command()
 {
     char command[10];
@@ -121,10 +130,13 @@ Command Get_Command()
     {
         return __tree;
     }
+    else if (AreSame(command, "clear"))
+    {
+        return __clear_screen;
+    }
     else
     {
-        fflush(stdin);
-        fflush(stdout);
+        clean_input();
         return __INVALID_COMMAND;
     }
 }
@@ -133,6 +145,13 @@ void PerformAction(PtrToDirec root, Command command, bool *using_use)
 {
     bool __using_use = *using_use;
     char input_string[MAX_STRLEN];
+
+    /* if __using_use is true 
+     *      we are in assignment folder in some subject folder.
+     *      we don't need the assignment name so clear input then call respective functions..
+     * else
+     *      we get the string and call respective functions
+     */
 
     switch (command)
     {
@@ -180,8 +199,16 @@ void PerformAction(PtrToDirec root, Command command, bool *using_use)
         }
         break;
     case __setup:
-        get_string(input_string);
-        setup(input_string);
+        if (__using_use)
+        {
+            clean_input();
+            setup(use_input_string);
+        }
+        else
+        {
+            get_string(input_string);
+            setup(input_string);
+        }
         break;
     case __test:
         if (__using_use)
@@ -213,14 +240,15 @@ void PerformAction(PtrToDirec root, Command command, bool *using_use)
         break;
     case __use:
         get_string(input_string);
-        if (use(input_string))
+        if (use(input_string)) //this returns true if folder with  name input_string exists.
         {
             __using_use = true;
             strcpy(use_input_string, input_string);
+            // store the name in use_input_string so that other functions use this
+            // when __using_use is true
         }
-        else
+        else //no folder with that name
         {
-
             char error_str[MAX_LEN_NAME];
             sprintf(error_str, "%s - No such folder\n", input_string);
             print_in_color(error_str, RED, NOTBOLD);
@@ -230,11 +258,11 @@ void PerformAction(PtrToDirec root, Command command, bool *using_use)
         printf("\n");
         if (__using_use)
         {
-            PrintDirecTree(NEW_CURR_PATH, 0, __print_name);
+            PrintDirecTree(NEW_CURR_PATH, 0, __print_name); //new current path contains the actual path
         }
         else
         {
-            PrintDirecTree(CURRENT_DIRECTORY, 0, __print_name);
+            PrintDirecTree(CURRENT_DIRECTORY, 0, __print_name); //this contains the previous path
         }
         printf("\n");
         break;
@@ -242,11 +270,13 @@ void PerformAction(PtrToDirec root, Command command, bool *using_use)
         change_dir_back();
         __using_use = false;
         break;
-    default:
+    case __clear_screen:
+        system("clear");
+    default: //will not happen but is good practice to have it.
         print_in_color("***SOMTHING IS WRONG***\n", GREEN, BOLD);
         print_in_color("exiting.....\n", GREEN, BOLD);
         exit(EXIT_FAILURE);
         break;
     }
-    *using_use = __using_use;
+    *using_use = __using_use; //store the value of __using_use in *using_use. so that changes are retained.
 }
