@@ -37,8 +37,8 @@ This contains the following folder structure
 |      |__submit.c
 |
 |__compare
-|      |__
-|      |__
+|      |__compare.h
+|      |__compare.c
 |__use
 |      |__use.c and use.h
 |      |__README.md
@@ -143,7 +143,11 @@ commands you can use are as follows
  - After this command gets executed , the txt file with compilation error will be created in Assign-1 folder.
 
 # submit
-
+ -Zips the required assignment folder and stores it in the current subject folder
+ Command used is
+ ```
+ cd /dir/ && zip -r assign.zip assign && cd -
+ ```
  ```
  user/dsa>submit assign-1
  user/dsa>
@@ -153,23 +157,23 @@ commands you can use are as follows
 # compare
  
 
- - reference [md5sum](https://www.a2hosting.in/kb/developer-corner/linux/working-with-file-checksums)
+ - Compares the file tree to check if any of the files in the submitted zip are different from any of the files in the given assignment directory.
+ - Prints list of different files using MD5 sum command
 
-`Note`:you don't need any account as mention in above link.
-
- use the following command
-
- ```
- name@name-system-name:~$ md5sum switch/switch.c  > md5sums.txt
+ Following commands have been used
 
  ```
- comment one line in switch.c and then run the following command
+ name@name-system-name:~$ find /path of assignment/ -type f -exec md5sum {} + | sort -k 2 | sed 's/ .*\\// /'> dir1.txt
+ name@name-system-name:~$ find /path of assignment zip file/ -type f -exec md5sum {} + | sort -k 2 | sed 's/ .*\\// /'> dir2.txt
 
  ```
- name@name-system-name:~$ md5sum switch/switch.c  > md5sums1.txt
+ Then the two text files are compared
 
  ```
- you will see both are different that shows that the file is corrupt(not the same or modified).
+ name@name-system-name:~$ diff -s dir1.txt dir2.txt
+
+ ```
+ you will see the different files in both or nothing if they are the same.
 
 # use
  - This command changes the prompt to ``` user/folder/<assignment>```
