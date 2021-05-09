@@ -33,7 +33,7 @@ void execute(PtrToDirec name, char *input_string)
     system(exe_command);
 
     strcpy(s,input_string);
-    strcat(s,".zip"););
+    strcat(s,".zip");
 
     //For adding this zipped file to the tree structure
     PtrToDirec New_dir = InitializeDirecTree(s, name->Path);
