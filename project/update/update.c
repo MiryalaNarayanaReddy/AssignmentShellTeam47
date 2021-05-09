@@ -108,7 +108,7 @@ void check_for_updates(PtrToDirec root, PtrToDirec check_folder)
         {
             last_md_of_assign = get_last_modified_date(temp);
             last_md_of_copy = get_last_modified_date(curr);
-            if (strcmp(last_md_of_assign, last_md_of_copy) > 0)
+            if (strcmp(last_md_of_assign, last_md_of_copy) > 0)//checks for the modification time of existed file and changed one(copied)
             {
                 remove_file(curr);
                 copy_file(temp->Path, curr->Path);
@@ -116,6 +116,7 @@ void check_for_updates(PtrToDirec root, PtrToDirec check_folder)
             free(last_md_of_assign);
             free(last_md_of_copy);
         }
+        //If a new file has been added
         else
         {
             PtrToDirec new_file = NewDirec(temp->Name);
