@@ -68,7 +68,7 @@ void compare(char *input_string, char *input_string1)
         sprintf(error_str, "%s - No such folder\n", input_string1);
         print_in_color(error_str, RED, NOTBOLD);
     }
-
+    //If both exist execute the comparing procedure
     else
         exec(ptrtofolder, input_string, ptrtofolder1, input_string1);
 }
