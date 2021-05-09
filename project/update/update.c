@@ -88,7 +88,7 @@ void check_for_updates(PtrToDirec root, PtrToDirec check_folder)
 
     PtrToDirec curr;
 
-    while (temp != NULL)
+    while (temp != NULL)//sub directory exists
     {
         curr = FindDirectory(temp2, temp->Name);
 
@@ -102,10 +102,10 @@ void check_for_updates(PtrToDirec root, PtrToDirec check_folder)
     char *last_md_of_assign;
     char *last_md_of_copy;
 
-    while (temp != NULL)
+    while (temp != NULL)  
     {
         curr = FindFile(temp2, temp->Name);
-        if (curr != NULL)
+        if (curr != NULL) // if the file exists
         {
             last_md_of_assign = get_last_modified_date(temp);
             last_md_of_copy = get_last_modified_date(curr);
@@ -114,13 +114,13 @@ void check_for_updates(PtrToDirec root, PtrToDirec check_folder)
                 remove_file(curr);
                 copy_file(temp->Path, curr->Path);
 
-                print_in_color(temp->Name, PINK, NOTBOLD);
+                print_in_color(temp->Name, PINK, NOTBOLD);//if the existing file has been updated,it displays the file name in Pink colour.
                 printf(" is updated\n");
             }
             free(last_md_of_assign);
             free(last_md_of_copy);
         }
-        else
+        else//if the file has not been present i.e. a new file has been added
         {
             PtrToDirec new_file = NewDirec(temp->Name);
             new_file = check_folder->PtrToSubFiles;
@@ -131,7 +131,7 @@ void check_for_updates(PtrToDirec root, PtrToDirec check_folder)
             strcat(new_file->Path, temp->Name);
 
             copy_file(temp->Path, new_file->Path);
-            print_in_color(temp->Name, GREEN, NOTBOLD);
+            print_in_color(temp->Name, GREEN, NOTBOLD);//it displays the name of new file in green colour.
             printf(" is new file\n");
         }
         temp = temp->Next;
@@ -143,10 +143,10 @@ void update(char *input_string)
     char error_str[MAX_LEN_NAME];
     PtrToDirec check_folder = FindDirectory(CURRENT_DIRECTORY, input_string);
     PtrToDirec assign_folder = InitializeDirecTree("assignment", "../../assignment");
-    if (check_folder == NULL)
+    if (check_folder == NULL)//if the folder does not exist then it displays the error in red
     {
         sprintf(error_str, "%s - No such folder\n", input_string);
-        print_in_color(error_str, RED, NOTBOLD);
+        print_in_color(error_str, RED, NOTBOLD); 
         return;
     }
     check_for_updates(assign_folder, check_folder);
