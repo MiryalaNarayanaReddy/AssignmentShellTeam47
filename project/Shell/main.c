@@ -2,7 +2,7 @@
 #include "directory.h"
 #include "user.h"
 
-//#define ABBR 0
+#define ABBR 0
 
 int main()
 {
@@ -18,7 +18,7 @@ int main()
   bool __abbreviate_subject = false;
 
 #ifdef ABBR
-  bool __abbreviate_subject = true;
+  __abbreviate_subject = true;
 #endif
 
   /*****************************************************
