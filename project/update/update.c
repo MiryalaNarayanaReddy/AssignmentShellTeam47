@@ -12,18 +12,18 @@
 #include <assert.h>
 #include "../create/create.h"
 
-void copy_file(char *source, char *destination)
+void copy_file(char *source, char *destination)//copies a file from source to destination
 {
     char exe_command[MAX_PATH_LEN];
     char s[MAX_PATH_LEN];
     char d[MAX_PATH_LEN];
 
     strcpy(exe_command, "cp ");
-
+//strcpy- It is a C library function which copies 2nd string to the 1st
     strcpy(s, source);
     AddSlashSpaceInSubjectName(s); /////// source
     strcat(exe_command, s);
-
+//strcat- It is a C library function include in string.h header file which concatenates the last string and the first string and stores the result in first string.
     strcat(exe_command, " ");
 
     strcpy(d, destination);
@@ -31,9 +31,10 @@ void copy_file(char *source, char *destination)
     strcat(exe_command, d);
 
     system(exe_command);
+    //Using system(), we can execute any command that can run on terminal if operating system allows.
 }
 
-void remove_file(PtrToDirec file)
+void remove_file(PtrToDirec file)//to remove the file which has been passed in the function.
 {
     char clean_it[MAX_PATH_LEN];
     char path[MAX_PATH_LEN];
@@ -45,7 +46,7 @@ void remove_file(PtrToDirec file)
 
     system(clean_it);
 }
-
+/*If the time of last modification is more than the time of copying of file in a folder then it copies the new file in that folder*/
 char *get_last_modified_date(PtrToDirec file)
 {
     char *time = (char *)malloc(sizeof(char) * MAX_LEN_NAME);
@@ -55,15 +56,17 @@ char *get_last_modified_date(PtrToDirec file)
     AddSlashSpaceInSubjectName(path);
     strcat(time,path);
 
-    FILE *fp = fopen("i.txt", "w");
+    FILE *fp = fopen("i.txt", "w");//(fopen() open the file pointed to using the given mode)
+    //"w"=Creates an empty file for writing. If already exist then the contents are erased and is considered an empty file.
     fclose(fp);
 
     strcat(time, " > i.txt");
     system(time);
 
     fp = fopen("i.txt", "r");
+    //"r"= Opens an existed file for reading.
     int i = 0;
-    while (!feof(fp))
+    while (!feof(fp))//while end of the file is not visited i.e all the characters of i.txt get to read, the while loop continues.
     {
         fscanf(fp, "%ch", &time[i]);
         i++;
@@ -71,7 +74,7 @@ char *get_last_modified_date(PtrToDirec file)
     remove("i.txt");
     return time;
 }
-
+//This function is called recurrsively to check for updates for every folder in it.
 void check_for_updates(PtrToDirec root, PtrToDirec check_folder)
 {
     if (root == NULL)
