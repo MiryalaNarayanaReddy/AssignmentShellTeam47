@@ -13,35 +13,35 @@ This contains the following folder structure
 |
 |__switch
 |      |__switch.c and switch.h
-|      |__
-|      |__
+|      |__README.md
+|
 |
 |__create
 |      |__create.h
 |      |__create.c
 |
 |__update
-|      |__update.c and update.h
-|      |__
+|      |__update.h
+|      |__update.c
 |
 |__setup
-|      |__setup.c and setup.h
-|      |__
+|      |__setup.h
+|      |__setup.c
 |
 |__test
-|      |__ test.c and test.h
-|      |__
+|      |__test.h
+|      |__test.c
 |
 |__submit
-|      |__submit.c and submit.h
-|      |__
+|      |__submit.h
+|      |__submit.c
 |
 |__compare
 |      |__
 |      |__
 |__use
-|    |__use.c and use.h
-|    |__README.md
+|      |__use.c and use.h
+|      |__README.md
 |
 |__ README.md
 |__ Mini_Project.pdf
@@ -62,7 +62,7 @@ You will see something like below
 name@name-system-name:~$./main
 user>
 ```
-you enter your commands for the prompt `user>`
+You enter your commands for the prompt `user>`
 commands you can use are as follows
 
 # switch
@@ -130,7 +130,7 @@ commands you can use are as follows
   user>setup ../../i.txt
   user>
   ``` 
-  this will create the required indented tree directory structure(of structure in i.txt) <u> outside project folder</u> (this is hard coded path).
+  This will create the required indented tree directory structure(of structure in i.txt) <u> outside project folder</u> (this is hard coded path).
 
 # test 
  - Runs the submitter.py file in the dist folder, if it exist. The compilation error are stored in txt file.
@@ -228,7 +228,7 @@ for more understanding look at the following links(both).They will surely give y
 
 - [git](https://www.youtube.com/watch?v=F2DBSH2VoHQ)
 
-### wanna have online VScode experience
+### Want to have online VScode experience
 
 - [github1s](https://github1s.com/).
 
