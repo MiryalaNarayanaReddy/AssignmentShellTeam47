@@ -7,7 +7,7 @@
 #include "../setup/setup.h"
 #include "../submit/submit.h"
 #include "../test/test.h"
-// #include "../compare/compare.h"
+#include "../compare/compare.h"
 #include "../use/use.h"
 
 // ESC[background_colour;Text_colourm output ESC[m”
@@ -72,7 +72,35 @@ void get_string(char *s)
     s[i] = '\0';
 }
 
-void clean_input() //clears the input buffer in one line upto '\n'
+//Takes input of two strings for the compare function separated by spaces
+void get_string1(char *s, char *s1)
+{
+    strcpy(s, "");
+    strcpy(s1, "");
+    char ch;
+    int i = 0;
+    while ((ch = getchar()) == ' ')
+        ;
+    do
+    {
+        s[i++] = ch;
+    } while ((ch = getchar()) != ' ');
+    s[i] = '\0';
+    i = 0;
+
+    while ((ch = getchar()) == ' ')
+        ;
+
+    do
+    {
+        s1[i++] = ch;
+    } while ((ch = getchar()) != '\n');
+
+    s1[i] = '\0';
+}
+
+//clears the input buffer in one line upto '\n'
+void clean_input() 
 {
     char ch;
     while ((ch = getchar()) != '\n')
@@ -236,6 +264,16 @@ void PerformAction(PtrToDirec root, Command command, bool *using_use)
 
         break;
     case __compare:
+        if (__using_use)
+        {
+            get_string1(input_string, input_string1);
+            compare(input_string, input_string1);
+        }
+        else
+        {
+            get_string1(input_string, input_string1);
+            compare(input_string, input_string1);
+        }
 
         break;
     case __use:
