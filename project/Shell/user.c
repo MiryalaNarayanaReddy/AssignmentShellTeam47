@@ -311,6 +311,7 @@ void PerformAction(PtrToDirec root, Command command, bool *using_use)
         break;
     case __clear_screen:
         system("clear");
+        break;
     default: //will not happen but is good practice to have it.
         print_in_color("***SOMTHING IS WRONG***\n", GREEN, BOLD);
         print_in_color("exiting.....\n", GREEN, BOLD);
