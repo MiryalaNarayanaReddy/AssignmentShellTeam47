@@ -159,6 +159,11 @@ commands you can use are as follows
 
  - Compares the file tree to check if any of the files in the submitted zip are different from any of the files in the given assignment directory.
  - Prints list of different files using MD5 sum command
+ - To run compare:
+ ```
+ user/dsa>compare assign-1 assign-1.zip
+ user/dsa>
+ ```
 
  Following commands have been used
 
