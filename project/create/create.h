@@ -4,5 +4,6 @@
 void create(char *input_string);
 void MakeNewFolder(char *input_string);
 void copy_everything(char *destination);
+void AddSlashSpaceInSubjectName(char *input_string);
 
 #endif
