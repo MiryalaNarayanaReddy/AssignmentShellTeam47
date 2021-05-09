@@ -127,10 +127,11 @@ commands you can use are as follows
    give the path of indented text file (relative to main.c in Shell folder) as second argument.
   
   ```
-  user>setup ../../i.txt
+  user>setup assign-1
   user>
   ``` 
-  This will create the required indented tree directory structure(of structure in i.txt) <u> outside project folder</u> (this is hard coded path).
+  
+  This will create assign-1 folder and the required indented tree directory structure (of structure in i.txt) <u> inside assign-1 folder </u>.
 
 # test 
  - Runs the submitter.py file in the dist folder, if it exist. The compilation error are stored in txt file.
