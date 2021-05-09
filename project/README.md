@@ -123,8 +123,7 @@ commands you can use are as follows
 
 
 # setup
- - this is independent of current directory path.
-   give the path of indented text file (relative to main.c in Shell folder) as second argument.
+ This command make indented tree directory structure.
   
   ```
   user>setup assign-1
