@@ -173,6 +173,7 @@ void PerformAction(PtrToDirec root, Command command, bool *using_use)
 {
     bool __using_use = *using_use;
     char input_string[MAX_STRLEN];
+    char input_string1[MAX_STRLEN];
 
     /* if __using_use is true 
      *      we are in assignment folder in some subject folder.
