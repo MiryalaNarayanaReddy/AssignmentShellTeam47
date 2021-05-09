@@ -83,7 +83,9 @@ void test(char *input_string)
     }
     else
     {
+        print_in_color("Testing...\n", PINK, NOTBOLD);
         Execute(exists, ptrtodist); //then excute the file
+        print_in_color("Done...\n", PINK, NOTBOLD);
 
         if (FindFile(ptrtodist, "test_logs.txt") != NULL) //if log.txt file is alreay there
         {
