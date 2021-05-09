@@ -80,6 +80,7 @@ commands you can use are as follows
    user/dsm>
    ```
    
+   
 
 # create 
   - This command creates a new folder for the assignment, downloads (or copies locally) the contents of the dist folder and the problem statement into the current directory.
@@ -132,28 +133,43 @@ commands you can use are as follows
   this will create the required indented tree directory structure(of structure in i.txt) <u> outside project folder</u> (this is hard coded path).
 
 # test 
+ - Runs the submitter.py file in the dist folder, if it exist. The compilation error are stored in txt file.
+ - The compilation error are stored in txt file and sent to the TA for debugging.
+
+ ```
+ user/dsa>test assign-1
+ user/dsa>
+ ```
+ - After this command gets executed , the txt file with compilation error will be created in Assign-1 folder.
 
 # submit
 
-# compare
+ ```
+ user/dsa>submit assign-1
+ user/dsa>
+ ```
+ - After this command gets executed , the zip file of assign-1 will be copied to the present subject directory.
 
-- reference [md5sum](https://www.a2hosting.in/kb/developer-corner/linux/working-with-file-checksums)
+# compare
+ 
+
+ - reference [md5sum](https://www.a2hosting.in/kb/developer-corner/linux/working-with-file-checksums)
 
 `Note`:you don't need any account as mention in above link.
 
-use the following command
+ use the following command
 
-```
-name@name-system-name:~$ md5sum switch/switch.c  > md5sums.txt
+ ```
+ name@name-system-name:~$ md5sum switch/switch.c  > md5sums.txt
 
-```
-comment one line in switch.c and then run the following command
+ ```
+ comment one line in switch.c and then run the following command
 
-```
-name@name-system-name:~$ md5sum switch/switch.c  > md5sums1.txt
+ ```
+ name@name-system-name:~$ md5sum switch/switch.c  > md5sums1.txt
 
-```
-you will see both are different that shows that the file is corrupt(not the same or modified).
+ ```
+ you will see both are different that shows that the file is corrupt(not the same or modified).
 
 # use
  - This command changes the prompt to ``` user/folder/<assignment>```
