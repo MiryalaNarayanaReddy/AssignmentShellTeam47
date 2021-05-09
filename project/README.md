@@ -143,8 +143,8 @@ commands you can use are as follows
  - After this command gets executed , the txt file with compilation error will be created in Assign-1 folder.
 
 # submit
- -Zips the required assignment folder and stores it in the current subject folder
- Command used is
+ - Zips the required assignment folder and stores it in the current subject folder
+ - Command used is
  ```
  cd /dir/ && zip -r assign.zip assign && cd -
  ```
