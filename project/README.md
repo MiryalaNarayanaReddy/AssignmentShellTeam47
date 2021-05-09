@@ -86,7 +86,7 @@ commands you can use are as follows
   - This command creates a new folder for the assignment, downloads (or copies locally) the contents of the dist folder and the problem statement into the current directory.
 
   ```
-  user>create dsa
+  user>switch dsa
   user>
   ```
 
