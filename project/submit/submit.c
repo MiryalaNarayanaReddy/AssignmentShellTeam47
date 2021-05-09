@@ -9,7 +9,7 @@ void execute(PtrToDirec name, char *input_string)
 
     char path[MAX_PATH_LEN];
 
-    strcpy(path, PATH_OF_CURRENT_DIRECTORY);
+    strcpy(path, CURRENT_DIRECTORY->Path);
     AddSlashSpaceInSubjectName(path); //add slash before every space
 
     //for changing directory
