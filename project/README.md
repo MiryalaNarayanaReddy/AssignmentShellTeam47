@@ -87,7 +87,7 @@ commands you can use are as follows
 
   ```
   user>switch dsa
-  user>
+  user/dsa>
   ```
 
   For creating subfolder use the following command.
