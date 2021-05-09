@@ -8,6 +8,8 @@ void execute(PtrToDirec name, char *input_string)
     char exe_command[MAX_PATH_LEN];
     char s[1000];
     char path[MAX_PATH_LEN];
+    
+    print_in_color("Zipping...", PINK, NOTBOLD);
 
     strcpy(path, CURRENT_DIRECTORY->Path);
     AddSlashSpaceInSubjectName(path); //add slash before every space
@@ -15,7 +17,6 @@ void execute(PtrToDirec name, char *input_string)
     //for changing directory
     strcpy(exe_command, "cd ");
     strcat(exe_command, path);
-    printf("%s\n", exe_command);
 
     strcat(exe_command, " && ");
 
@@ -28,7 +29,7 @@ void execute(PtrToDirec name, char *input_string)
     // for changing directory
     strcat(exe_command, " && ");
     strcat(exe_command, "cd -");
-    printf("%s\n", exe_command);
+    printf("\n");
 
     system(exe_command);
 
