@@ -90,7 +90,7 @@ commands you can use are as follows
   user/dsa>
   ```
 
-  For creating subfolder use the following command and copues contents of assignment folder outside our project folder.
+  For creating subfolder use the following command and copies contents of assignment folder outside our project folder.
 
   ```
   user/dsa>create assign-1
