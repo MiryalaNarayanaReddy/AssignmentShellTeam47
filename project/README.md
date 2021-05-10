@@ -196,6 +196,16 @@ commands you can use are as follows
  ```
  This will print all the contents of the subject folder dsa.
  
+ # back
+ - This command changes from this prompt ``` user/folder/<assignment>``` to this ``` user/folder>``` i.e moves back to the subject directory
+
+  ```
+  user>switch dsa
+  user/dsa>use assign-1
+  user/dsa/assign-1>back
+  user/dsa>
+  ```
+ 
 # clear
  - This will clear the screen and show the prompt.
 
