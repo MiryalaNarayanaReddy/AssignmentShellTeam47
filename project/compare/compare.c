@@ -10,6 +10,11 @@ void exec(PtrToDirec name, char *input_string, PtrToDirec name1, char *input_str
 
     strcpy(path, name1->Path);
     AddSlashSpaceInSubjectName(path); //add slash before every space
+    
+    char path1[MAX_PATH_LEN];
+
+    strcpy(path1, name->Path);
+    AddSlashSpaceInSubjectName(path1); //add slash before every space
 
     //unzipping the zipped file using system command
     strcpy(execommand, "unzip ");
@@ -22,7 +27,7 @@ void exec(PtrToDirec name, char *input_string, PtrToDirec name1, char *input_str
 
     //md5sum of unzipped file is calculated at stored in dir2.txt and md5sum of required assignment in dir1.txt
     strcpy(execommand, "find ");
-    strcat(execommand, path);
+    strcat(execommand, path1);
     strcat(execommand, " -type f -exec md5sum {} + | sort -k 2 | sed 's/ .*\\// /'> dir1.txt");
     system(execommand);
     strcpy(execommand, "find ../../user/");
