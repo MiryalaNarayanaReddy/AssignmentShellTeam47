@@ -188,6 +188,14 @@ commands you can use are as follows
   user/dsa>use assign-1
   user/dsa/assign-1>
   ```
+# tree
+ - This command prints the tree structure of the present directory.
+
+ ```
+ user/dsa>tree
+ ```
+ This will print all the contents of the subject folder dsa.
+ 
 # clear
  - This will clear the screen and show the prompt.
 
@@ -200,7 +208,7 @@ commands you can use are as follows
 
 ```
 user/dsa>
-```
+``` 
 ## some references to headers
 
 
