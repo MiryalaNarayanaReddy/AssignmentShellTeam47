@@ -72,33 +72,6 @@ void get_string(char *s)
     s[i] = '\0';
 }
 
-//Takes input of two strings for the compare function separated by spaces
-void get_string1(char *s, char *s1)
-{
-    strcpy(s, "");
-    strcpy(s1, "");
-    char ch;
-    int i = 0;
-    while ((ch = getchar()) == ' ')
-        ;
-    do
-    {
-        s[i++] = ch;
-    } while ((ch = getchar()) != ' ');
-    s[i] = '\0';
-    i = 0;
-
-    while ((ch = getchar()) == ' ')
-        ;
-
-    do
-    {
-        s1[i++] = ch;
-    } while ((ch = getchar()) != '\n');
-
-    s1[i] = '\0';
-}
-
 //clears the input buffer in one line upto '\n'
 void clean_input() 
 {
@@ -265,17 +238,26 @@ void PerformAction(PtrToDirec root, Command command, bool *using_use)
 
         break;
     case __compare:
-        if (__using_use)
+       if (__using_use)
         {
-            get_string1(input_string, input_string1);
-            compare(input_string, input_string1);
+            scanf("%s", input_string);
+            if (AreSame(input_string, use_input_string))
+            {
+                scanf("%s", input_string);
+                compare(use_input_string, input_string);
+            }
+            else
+            {
+                compare(use_input_string, input_string);
+            }
         }
         else
         {
-            get_string1(input_string, input_string1);
-            compare(input_string, input_string1);
+            char zipfile[MAX_LEN_NAME];
+            scanf("%s", input_string);
+            scanf("%s", zipfile);
+            compare(input_string, zipfile);
         }
-
         break;
     case __use:
         get_string(input_string);
