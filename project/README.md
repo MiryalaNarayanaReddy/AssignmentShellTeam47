@@ -134,13 +134,13 @@ commands you can use are as follows
 
 # test 
  - Runs the submitter.py file in the dist folder, if it exist. The compilation error are stored in txt file.
- - The compilation error are stored in txt file and sent to the TA for debugging.
+ - The compilation error are stored in .txt file and sent to the TA for debugging.
 
  ```
  user/dsa>test assign-1
  user/dsa>
  ```
- - After this command gets executed , the txt file with compilation error will be created in Assign-1 folder.
+ - After this command gets executed , the .txt file with compilation error will be created in assign-1 folder.
 
 # submit
  - Zips the required assignment folder and stores it in the current subject folder
@@ -188,8 +188,19 @@ commands you can use are as follows
   user/dsa>use assign-1
   user/dsa/assign-1>
   ```
+# clear
+ - This will clear the screen and show the prompt.
 
+ ```
+ user/dsa>submit
+ user/dsa>test
+ user/dsa>clear
+ ```
+- this will clear screen
 
+```
+user/dsa>
+```
 ## some references to headers
 
 
